@@ -27,7 +27,8 @@ jobs:
       - name: Build with PyInstaller (Windows/Linux)
         if: runner.os != 'macOS'
         working-directory: MotI
-        run: pyinstaller --onefile --add-data "assets;assets" MotI.py
+        shell: bash
+        run: pyinstaller --onefile --add-data "assets:assets" MotI.py
 
       - name: Build with PyInstaller (macOS)
         if: runner.os == 'macOS'
