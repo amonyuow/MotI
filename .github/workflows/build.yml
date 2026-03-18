@@ -24,16 +24,9 @@ jobs:
           pip install pyinstaller
           pip install pygame
 
-      - name: Build with PyInstaller (Windows/Linux)
-        if: runner.os != 'macOS'
+      - name: Build with PyInstaller
         working-directory: MotI
-        shell: bash
-        run: pyinstaller --onefile --add-data "assets:assets" MotI.py
-
-      - name: Build with PyInstaller (macOS)
-        if: runner.os == 'macOS'
-        working-directory: MotI
-        run: pyinstaller --onefile --add-data "assets:assets" MotI.py
+        run: pyinstaller MotI.spec
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
